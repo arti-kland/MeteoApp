@@ -1,6 +1,6 @@
 
 
-const baseUrl = 'http://api.openweathermap.org/data/2.5/';
+const baseUrl = 'https://api.openweathermap.org/data/2.5/';
 const apiKey = '099360d94a3ee7c24416ecc6fa0cbf31';
 
 

@@ -14,13 +14,15 @@ export const app = {
         },
     },
     effects:(dispatch) => ({
-        async getMeteoInformations() {
-            const response = await requestGet('weather', 'q=annecy');
-            console.log(response);
+        async getMeteoInformations(location) {
+            console.log(location);
+            if(location) {
+                const { coords: { latitude, longitude } } = location;      
+                const response = await requestGet('weather', `lat=${latitude}&lon=${longitude}`);
             if (response) {
                 this.setInformations(response);
+            }
             }
         }
     })
 };
-

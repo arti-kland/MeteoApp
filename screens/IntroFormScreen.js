@@ -56,7 +56,7 @@ return(
 );
 }
 
-IntroFormScreen.PropTypes = {
+IntroFormScreen.propTypes = {
     dispatch: PropTypes.func.isRequired,
     navigation: PropTypes.shape({
         navigate: PropTypes.func,
