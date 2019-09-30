@@ -11,12 +11,14 @@ const store = init ({
 });
 
 export default function App() {
+
   return (
   <Provider store = {store}>
      <AppNavigator />
   </Provider>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

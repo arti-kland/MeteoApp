@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { View, Text, TextInput, Button, Dimensions, AsyncStorage} from 'react-native';
+import { connect, useDispatch } from 'react-redux';
+import { View, Text, TextInput, Button, Dimensions, AsyncStorage } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
@@ -14,7 +14,7 @@ const styleSheet = {
         alignItems: 'center',
     },
     label: {
-        color: 'black',
+        color: 'grey',
         fontSize: 18,
     },
     input: {
@@ -30,15 +30,18 @@ const IntroFormScreen = props => {
     async function handleSubmit() {
         if(name !== '') {
             await AsyncStorage.setItem('name', name);
+        dispatch.app.setName(name);
             navigation.navigate('Welcome');
         }
     }
+const dispatch = useDispatch()
+
 const [name, setName] = useState('');
-const {dispatch, navigation } = props;
+const { navigation } = props;
 
 return(
     <View style = {styleSheet.container}>
-        <Text style = {styleSheet.label} >Prénom</Text>
+        <Text style = {styleSheet.label} >Votre Prénom</Text>
         <TextInput
         style = {styleSheet.input}
         onChangeText = {(text) => setName(text)}

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useSelector} from 'react-redux';
 import { View, Text, Dimensions, AsyncStorage } from 'react-native';
-import { setWorldAlignment } from 'expo/build/AR';
 
 const { width } = Dimensions.get('window');
 
@@ -15,7 +14,7 @@ const styleSheet = {
     alignItems: 'center',
 },
 nameStyle: {
-    color: 'red',
+    color: 'grey',
     fontSize: 25,
     fontWeight: 'bold',
 
@@ -23,14 +22,8 @@ nameStyle: {
 };
 
 const IntroScreen = props => {
-    useEffect(() => {
-        async function getName() {
-            const temp = await AsyncStorage.getItem('name');
-            setName(temp); 
-        }
-        getName();
-    }, []);
-
+            const name = useSelector(state => state.app.name);
+        
 
 useEffect(() => {
     setTimeout(() => {
@@ -38,7 +31,7 @@ useEffect(() => {
     }, 5000);
 }, []);
 
-const [name, setName] = useState('');
+//const [name, setName] = useState('');
 
 return(
     <View style = {styleSheet.container}>
